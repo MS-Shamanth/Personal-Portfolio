@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shamanth M S | ML Engineer & Developer</title>
+  <meta name="description"
+    content="Portfolio of Shamanth M S — Machine Learning Engineer, Web Developer, and AI enthusiast. Building practical AI systems with PyTorch, HuggingFace, and modern MLOps.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Cursor glow follower -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Particle canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Loading screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+      <p class="loader-text">SHAMANTH<span class="loader-dot">.</span></p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header id="mainHeader">
+    <nav>
+      <a href="#home" class="logo">
+        <span class="logo-bracket">&lt;</span>MS<span class="logo-slash">/</span>S<span class="logo-bracket">&gt;</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active" data-text="Home">Home</a>
+        <a href="#about" class="nav-link" data-text="About">About</a>
+        <a href="#skills" class="nav-link" data-text="Skills">Skills</a>
+        <a href="#experience" class="nav-link" data-text="Experience">Experience</a>
+        <a href="#projects" class="nav-link" data-text="Projects">Projects</a>
+        <a href="#achievements" class="nav-link" data-text="Achievements">Achievements</a>
+        <a href="#contact" class="nav-link" data-text="Contact">Contact</a>
+      </div>
+      <a href="assets/resume/Shamanth_Resume.pdf" download="Shamanth_MS_Resume.pdf" class="resume-btn" id="resumeBtn">
+        <span>Resume</span>
+        <i class="fas fa-download"></i>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+
+      <h1 class="hero-title reveal-up">
+        <span class="hero-line">Hi, I'm</span>
+        <span class="hero-name glitch" data-text="Shamanth M S">Shamanth M S</span>
+      </h1>
+      <div class="hero-typing reveal-up">
+        <span class="typing-prefix">I build</span>
+        <span class="typing-text" id="typingText"></span>
+        <span class="typing-cursor">|</span>
+      </div>
+      <p class="hero-desc reveal-up">
+        Third-year AIML student crafting intelligent AI systems with PyTorch,
+        HuggingFace & modern MLOps. Turning research into production-ready solutions.
+      </p>
+      <div class="hero-cta reveal-up">
+        <a href="#projects" class="btn-primary">
+          <span>View My Work</span>
+          <div class="btn-shine"></div>
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <span>Let's Talk</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="hero-stats reveal-up">
+        <div class="stat-item">
+          <span class="stat-number" data-target="5">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="3">0</span><span class="stat-suffix">+</span>
+          <span class="stat-label">Internships</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="8">0</span><span class="stat-suffix">.22</span>
+          <span class="stat-label">GPA</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal-up">
+      <div class="hero-card-3d" id="heroCard3D">
+        <div class="hero-card-inner">
+          <img src="assets/images/Profile.png" alt="Shamanth M S" class="hero-img">
+          <div class="hero-card-glow"></div>
+        </div>
+      </div>
+      <div class="floating-tech floating-tech-1"><i class="fab fa-python"></i></div>
+      <div class="floating-tech floating-tech-2"><i class="fab fa-docker"></i></div>
+      <div class="floating-tech floating-tech-3"><i class="fas fa-brain"></i></div>
+      <div class="floating-tech floating-tech-4"><i class="fab fa-git-alt"></i></div>
+    </div>
+    <div class="hero-socials">
+      <a href="https://github.com/MS-Shamanth" target="_blank" class="social-link" aria-label="GitHub"><i
+          class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/ms-shamanth/" target="_blank" class="social-link" aria-label="LinkedIn"><i
+          class="fab fa-linkedin-in"></i></a>
+    </div>
+    <a href="#about" class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll</span>
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;about&gt;</span>
+      <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <div class="about-img-container tilt-card">
+          <img src="assets/images/Profile.png" alt="Shamanth M S">
+          <div class="about-img-overlay"></div>
+          <div class="about-img-border"></div>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <h3 class="about-subtitle">ML Enthusiast & <span class="gradient-text">Web Developer</span></h3>
+        <p>I'm a third-year Machine Learning student at Vidyavardhaka College of Engineering, Mysuru, focused on
+          building practical AI systems with an emphasis on multimodal learning and reasoning.</p>
+        <p>Proficient in constructing ML models utilizing PyTorch, Scikit-learn, and contemporary MLOps tools including
+          Docker and Kubernetes. I'm adept at incorporating theoretical knowledge gained from state-of-the-art studies
+          in practice — from document understanding pipelines to judicial case intelligence systems.</p>
+        <div class="about-info-grid">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <span class="info-label">Location</span>
+              <span class="info-value">Mysuru, Karnataka</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <span class="info-label">Degree</span>
+              <span class="info-value">B.E. CSE (AIML)</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <span class="info-label">Email</span>
+              <span class="info-value">shamanthms1@gmail.com</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <span class="info-label">Phone</span>
+              <span class="info-value">+91 7019378029</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;skills&gt;</span>
+      <h2 class="section-title">Tech <span class="gradient-text">Arsenal</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="marquee-container reveal-up">
+      <!-- Line 1: Languages, DBs & Tools → RIGHT (8 items × 2 copies) -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-right">
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/Python.jpeg" alt="Python"><span>Python</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/Java.png" alt="Java"><span>Java</span></div>
+            <div class="tech-logo-card tech-logo-text"><i class="fas fa-database"></i><span>SQL</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/PostgreSQL.png" alt="PostgreSQL"><span>PostgreSQL</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/MySQL.png" alt="MySQL"><span>MySQL</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Git.png" alt="Git"><span>Git</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
+          </div>
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/Python.jpeg" alt="Python"><span>Python</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/JavaScript.png" alt="JavaScript"><span>JavaScript</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/Java.png" alt="Java"><span>Java</span></div>
+            <div class="tech-logo-card tech-logo-text"><i class="fas fa-database"></i><span>SQL</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/PostgreSQL.png" alt="PostgreSQL"><span>PostgreSQL</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/MySQL.png" alt="MySQL"><span>MySQL</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Git.png" alt="Git"><span>Git</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/GitHub.png" alt="GitHub"><span>GitHub</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Line 2: ML Frameworks → LEFT (7 items × 3 copies) -->
+      <div class="marquee-row">
+        <div class="marquee-track marquee-left-triple">
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/TensorFlow.png" alt="TensorFlow"><span>TensorFlow</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/Keras.png" alt="Keras"><span>Keras</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/HuggingFace.png"
+                alt="HuggingFace"><span>HuggingFace</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Scikit-Learn.png"
+                alt="Scikit-Learn"><span>Scikit-Learn</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Pandas.png" alt="Pandas"><span>Pandas</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Numpy.png" alt="NumPy"><span>NumPy</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/PyTorch.png" alt="PyTorch"><span>PyTorch</span></div>
+          </div>
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/TensorFlow.png" alt="TensorFlow"><span>TensorFlow</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/Keras.png" alt="Keras"><span>Keras</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/HuggingFace.png"
+                alt="HuggingFace"><span>HuggingFace</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Scikit-Learn.png"
+                alt="Scikit-Learn"><span>Scikit-Learn</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Pandas.png" alt="Pandas"><span>Pandas</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Numpy.png" alt="NumPy"><span>NumPy</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/PyTorch.png" alt="PyTorch"><span>PyTorch</span></div>
+          </div>
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/TensorFlow.png" alt="TensorFlow"><span>TensorFlow</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/Keras.png" alt="Keras"><span>Keras</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/HuggingFace.png"
+                alt="HuggingFace"><span>HuggingFace</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Scikit-Learn.png"
+                alt="Scikit-Learn"><span>Scikit-Learn</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Pandas.png" alt="Pandas"><span>Pandas</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Numpy.png" alt="NumPy"><span>NumPy</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/PyTorch.png" alt="PyTorch"><span>PyTorch</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- Line 3: MLOps → RIGHT (5 items × 3 copies) -->
+      <div class="marquee-row marquee-row-sparse">
+        <div class="marquee-track marquee-right-triple">
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/Docker.png" alt="Docker"><span>Docker</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Kubernetes.png" alt="Kubernetes"><span>Kubernetes</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/MLFlow.png" alt="MLflow"><span>MLflow</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/DataBricks.png" alt="Databricks"><span>Databricks</span>
+            </div>
+            <div class="tech-logo-card tech-logo-text"><i class="fas fa-plug"></i><span>REST APIs</span></div>
+          </div>
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/Docker.png" alt="Docker"><span>Docker</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Kubernetes.png" alt="Kubernetes"><span>Kubernetes</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/MLFlow.png" alt="MLflow"><span>MLflow</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/DataBricks.png" alt="Databricks"><span>Databricks</span>
+            </div>
+            <div class="tech-logo-card tech-logo-text"><i class="fas fa-plug"></i><span>REST APIs</span></div>
+          </div>
+          <div class="marquee-content">
+            <div class="tech-logo-card"><img src="assets/logos/Docker.png" alt="Docker"><span>Docker</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/Kubernetes.png" alt="Kubernetes"><span>Kubernetes</span>
+            </div>
+            <div class="tech-logo-card"><img src="assets/logos/MLFlow.png" alt="MLflow"><span>MLflow</span></div>
+            <div class="tech-logo-card"><img src="assets/logos/DataBricks.png" alt="Databricks"><span>Databricks</span>
+            </div>
+            <div class="tech-logo-card tech-logo-text"><i class="fas fa-plug"></i><span>REST APIs</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;experience&gt;</span>
+      <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="experience-timeline">
+      <div class="exp-card reveal-up" style="--delay: 0">
+        <div class="exp-date">
+          <span>Feb 2026 – Apr 2026</span>
+        </div>
+        <div class="exp-content tilt-card">
+          <div class="exp-header">
+            <div class="exp-icon"><i class="fas fa-robot"></i></div>
+            <div>
+              <h3>AI/ML Intern</h3>
+              <p class="exp-company">Infosys Springboard (Virtual Internship 6.0)</p>
+            </div>
+          </div>
+          <ul class="exp-details">
+            <li>Automated preprocessing for thousands of records, reducing manual data preparation time by ~40%</li>
+            <li>Engineered 14+ new financial risk features significantly improving model interpretability</li>
+            <li>Developed a Random Forest model achieving 0.96 ROC-AUC</li>
+            <li>Collaborated on feature engineering and model evaluation workflows</li>
+          </ul>
+          <div class="exp-tech-tags">
+            <span>Python</span><span>Scikit-Learn</span><span>Random Forest</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card reveal-up" style="--delay: 1">
+        <div class="exp-date">
+          <span>Nov 2025 – Jan 2026</span>
+        </div>
+        <div class="exp-content tilt-card">
+          <div class="exp-header">
+            <div class="exp-icon"><i class="fas fa-globe"></i></div>
+            <div>
+              <h3>Website Developer</h3>
+              <p class="exp-company">Eureka Institute</p>
+            </div>
+          </div>
+          <ul class="exp-details">
+            <li>Built core frontend modules and UI components for a production-grade platform</li>
+            <li>Improved page load performance by ~28% through modular restructuring</li>
+            <li>Delivered weekly feature updates maintaining a 95% merge acceptance rate</li>
+          </ul>
+          <div class="exp-tech-tags">
+            <span>React</span><span>CSS</span><span>TypeScript</span>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card reveal-up" style="--delay: 2">
+        <div class="exp-date">
+          <span>Oct 2024</span>
+        </div>
+        <div class="exp-content tilt-card">
+          <div class="exp-header">
+            <div class="exp-icon"><i class="fas fa-laptop-code"></i></div>
+            <div>
+              <h3>Freelance Web Developer</h3>
+              <p class="exp-company">PROFORMA (German Client)</p>
+            </div>
+          </div>
+          <ul class="exp-details">
+            <li>Delivered a full-scale frontend with 13,000+ lines of custom CSS</li>
+            <li>Improved usability by ~45% through clear navigation flows</li>
+            <li>Completed 100% of deliverables within deadlines, achieving strong client satisfaction</li>
+          </ul>
+          <div class="exp-tech-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;projects&gt;</span>
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal-up tilt-card" style="--delay: 0">
+        <div class="project-card-bg"></div>
+        <div class="project-number">01</div>
+        <div class="project-icon"><i class="fas fa-brain"></i></div>
+        <h3>Neuro-Symbolic System-2 Reasoning</h3>
+        <p>Hybrid LLM + ACT-R architecture for hallucination reduction. Built a Python-based validation layer with
+          HuggingFace Transformers, improving reasoning consistency by ~35%.</p>
+        <div class="project-tech">
+          <span>PyTorch</span><span>HuggingFace</span><span>Python</span>
+        </div>
+        <div class="project-metric">
+          <i class="fas fa-chart-line"></i>
+          <span>~35% consistency improvement</span>
+        </div>
+      </div>
+      <div class="project-card reveal-up tilt-card" style="--delay: 1">
+        <div class="project-card-bg"></div>
+        <div class="project-number">02</div>
+        <div class="project-icon"><i class="fas fa-gavel"></i></div>
+        <h3>NyayaFlow — AI Judicial System</h3>
+        <p>AI-powered judicial case intelligence system running on Databricks (Delta Lake, MLflow), handling 10,000+
+          cases in &lt;2 seconds with ~87% accuracy predictions.</p>
+        <div class="project-tech">
+          <span>Databricks</span><span>MLflow</span><span>Kubernetes</span><span>LLM</span>
+        </div>
+        <div class="project-metric">
+          <i class="fas fa-chart-line"></i>
+          <span>87% accuracy, 40% research time saved</span>
+        </div>
+      </div>
+      <div class="project-card reveal-up tilt-card" style="--delay: 2">
+        <div class="project-card-bg"></div>
+        <div class="project-number">03</div>
+        <div class="project-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>DocuParse AI — Document Understanding</h3>
+        <p>Multimodal document parser handling 1,000+ PDF/images with ~88% accuracy. Deployed OCR pipeline using
+          Tesseract with bounding box detection, increasing extraction accuracy by ~25%.</p>
+        <div class="project-tech">
+          <span>Tesseract</span><span>LayoutLLM</span><span>Docker</span><span>MLflow</span>
+        </div>
+        <div class="project-metric">
+          <i class="fas fa-chart-line"></i>
+          <span>~88% accuracy, +25% OCR improvement</span>
+        </div>
+      </div>
+      <div class="project-card reveal-up tilt-card" style="--delay: 3">
+        <div class="project-card-bg"></div>
+        <div class="project-number">04</div>
+        <div class="project-icon"><i class="fas fa-credit-card"></i></div>
+        <h3>CreditPathAI — Loan Default Prediction</h3>
+        <p>AI-driven loan default prediction system. Architected a data pipeline ingesting 148K+ financial records into
+          PostgreSQL, benchmarked XGBoost and LightGBM for optimal risk assessment.</p>
+        <div class="project-tech">
+          <span>PostgreSQL</span><span>XGBoost</span><span>LightGBM</span><span>Python</span>
+        </div>
+        <div class="project-metric">
+          <i class="fas fa-chart-line"></i>
+          <span>148K+ records, risk-stratification module</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;achievements&gt;</span>
+      <h2 class="section-title">Awards & <span class="gradient-text">Achievements</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="achievements-grid">
+      <div class="achievement-card reveal-up" style="--delay: 0">
+        <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+        <div class="achievement-content">
+          <h3>Runner-Up — TiE U Global Hackathon 2024</h3>
+          <p>Received a VIP invitation to attend the TiE Global Summit 2025</p>
+        </div>
+        <div class="achievement-glow"></div>
+      </div>
+      <div class="achievement-card reveal-up" style="--delay: 1">
+        <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+        <div class="achievement-content">
+          <h3>1st Place — Eurekathon 2025 (Coding Track)</h3>
+          <p>Led to being offered a Web Developer role at the Eureka Institute</p>
+        </div>
+        <div class="achievement-glow"></div>
+      </div>
+      <div class="achievement-card reveal-up" style="--delay: 2">
+        <div class="achievement-icon"><i class="fas fa-star"></i></div>
+        <div class="achievement-content">
+          <h3>Finalist — Infosys Global Hackathon 2025</h3>
+          <p>Top 2 out of 32 teams at Mysuru DC, attended Grand Finale in Hyderabad</p>
+        </div>
+        <div class="achievement-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;education&gt;</span>
+      <h2 class="section-title">Education <span class="gradient-text">Journey</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="education-cards">
+      <div class="edu-card reveal-up tilt-card" style="--delay: 0">
+        <div class="edu-icon"><i class="fas fa-university"></i></div>
+        <div class="edu-content">
+          <h3>Bachelor of Engineering</h3>
+          <p class="edu-field">CSE (AIML)</p>
+          <p class="edu-school">Vidyavardhaka College of Engineering, Mysuru</p>
+          <div class="edu-meta">
+            <span><i class="fas fa-calendar"></i> Expected Aug 2027</span>
+            <span><i class="fas fa-star"></i> GPA: 8.22/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-header reveal-up">
+      <span class="section-tag">&lt;contact&gt;</span>
+      <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-panel reveal-left">
+        <h3>Let's build something <span class="gradient-text">amazing</span> together</h3>
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+        <div class="contact-links">
+          <a href="mailto:shamanthms1@gmail.com" class="contact-link-item">
+            <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">shamanthms1@gmail.com</span>
+            </div>
+          </a>
+          <a href="tel:+917019378029" class="contact-link-item">
+            <div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <span class="contact-link-label">Phone</span>
+              <span class="contact-link-value">+91 7019378029</span>
+            </div>
+          </a>
+          <div class="contact-link-item">
+            <div class="contact-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <span class="contact-link-label">Location</span>
+              <span class="contact-link-value">Mysuru, Karnataka, India</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <a href="https://github.com/MS-Shamanth" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ms-shamanth/" target="_blank" aria-label="LinkedIn"><i
+              class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="contact-form-panel reveal-right">
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="contactName" name="name" required placeholder=" ">
+            <label for="contactName">Your Name</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <input type="email" id="contactEmail" name="email" required placeholder=" ">
+            <label for="contactEmail">Your Email</label>
+            <div class="form-line"></div>
+          </div>
+          <div class="form-group">
+            <textarea id="contactMessage" name="message" rows="4" required placeholder=" "></textarea>
+            <label for="contactMessage">Your Message</label>
+            <div class="form-line"></div>
+          </div>
+          <button type="submit" class="btn-primary submit-btn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+            <div class="btn-shine"></div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <a href="#home" class="footer-logo">
+        <span class="logo-bracket">&lt;</span>MS<span class="logo-slash">/</span>S<span class="logo-bracket">&gt;</span>
+      </a>
+      <p>Designed & Built by Shamanth M S</p>
+      <p class="footer-year">&copy; 2026 All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
