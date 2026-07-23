@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getBotResponse(input) {
     const q = input.toLowerCase().trim();
 
-    if (q.match(/hi|hello|hey|sup/)) return `Hey there! 👋 I'm Shamanth's assistant. Ask me about his skills, projects, experience, or certifications!`;
+    if (q.match(/hi|hello|hey|sup/)) return `Hey there! 👋 I'm Timi, Shamanth's assistant. Ask me about his skills, projects, experience, or certifications!`;
     if (q.match(/name|who/)) return `He's ${botKnowledge.name} — a ${botKnowledge.role} and ${botKnowledge.year} at ${botKnowledge.college}.`;
     if (q.match(/skill|tech|stack|language/)) return `His tech stack includes: ${botKnowledge.skills}.`;
     if (q.match(/project/)) return `He's built 6+ projects:\n• ${botKnowledge.projects.join('\n• ')}`;
