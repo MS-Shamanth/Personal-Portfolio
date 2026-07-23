@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatbotMessages = document.getElementById('chatbotMessages');
   const orbEyes = document.querySelectorAll('.ai-orb-eye');
 
-  // Orb eyes follow cursor
+  // Orb eyes follow cursor + blink
   document.addEventListener('mousemove', (e) => {
     if (!aiOrb) return;
     const orbRect = aiOrb.getBoundingClientRect();
@@ -430,6 +430,27 @@ document.addEventListener('DOMContentLoaded', () => {
       eye.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
   });
+
+  // Blink: squish to flat in 0.75s, then wait 4s
+  function doBlink() {
+    orbEyes.forEach(eye => {
+      eye.style.transition = 'transform 0.15s ease-in';
+      const current = eye.style.transform || '';
+      const base = current.replace(/scaleY\([^)]*\)/, '').trim();
+      eye.style.transform = base + ' scaleY(0.1)';
+    });
+    setTimeout(() => {
+      orbEyes.forEach(eye => {
+        eye.style.transition = 'transform 0.15s ease-out';
+        const current = eye.style.transform || '';
+        const base = current.replace(/scaleY\([^)]*\)/, '').trim();
+        eye.style.transform = base + ' scaleY(1)';
+      });
+    }, 150);
+  }
+
+  setInterval(doBlink, 4000);
+  setTimeout(doBlink, 1500);
 
   // Toggle chatbot
   const orbBubble = document.querySelector('.ai-orb-bubble');

@@ -2495,14 +2495,12 @@ footer {
   background: #fff;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-  transition: transform 0.1s ease-out;
   z-index: 2;
-  animation: eyePulse 1s ease-in-out infinite;
 }
 
-@keyframes eyePulse {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(0.6); }
+@keyframes eyeBlink {
+  0%, 15%, 100% { transform: scaleY(1); }
+  7.5% { transform: scaleY(0.1); }
 }
 
 .ai-orb-glow {
