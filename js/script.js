@@ -403,4 +403,141 @@ document.addEventListener('DOMContentLoaded', () => {
     document.title = document.hidden ? '👋 Come back!' : originalTitle;
   });
 
+  // ==========================================
+  //  AI ORB — CURSOR TRACKING & CHATBOT
+  // ==========================================
+  const aiOrb = document.getElementById('aiOrb');
+  const chatbotPanel = document.getElementById('chatbotPanel');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatbotInput = document.getElementById('chatbotInput');
+  const chatbotSend = document.getElementById('chatbotSend');
+  const chatbotMessages = document.getElementById('chatbotMessages');
+  const orbEyes = document.querySelectorAll('.ai-orb-eye');
+
+  // Orb eyes follow cursor
+  document.addEventListener('mousemove', (e) => {
+    if (!aiOrb) return;
+    const orbRect = aiOrb.getBoundingClientRect();
+    const orbCenterX = orbRect.left + orbRect.width / 2;
+    const orbCenterY = orbRect.top + orbRect.height / 2;
+    const dx = e.clientX - orbCenterX;
+    const dy = e.clientY - orbCenterY;
+    const maxMove = 3;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const moveX = (dx / Math.max(dist, 1)) * maxMove;
+    const moveY = (dy / Math.max(dist, 1)) * maxMove;
+    orbEyes.forEach(eye => {
+      eye.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+  });
+
+  // Toggle chatbot
+  if (aiOrb) {
+    aiOrb.addEventListener('click', () => {
+      chatbotPanel.classList.toggle('open');
+      if (chatbotPanel.classList.contains('open')) {
+        chatbotInput.focus();
+      }
+    });
+  }
+
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+      chatbotPanel.classList.remove('open');
+    });
+  }
+
+  // Chatbot knowledge base
+  const botKnowledge = {
+    name: "Shamanth M S",
+    role: "ML Engineer & Web Developer",
+    year: "Final-year B.E. CSE (AIML) student",
+    college: "Vidyavardhaka College of Engineering, Mysuru",
+    gpa: "8.31/10",
+    email: "shamanthms1@gmail.com",
+    phone: "+91 7019378029",
+    location: "Mysuru, Karnataka, India",
+    github: "https://github.com/MS-Shamanth",
+    linkedin: "https://www.linkedin.com/in/ms-shamanth/",
+    skills: "Python, JavaScript, Java, SQL, PyTorch, TensorFlow, HuggingFace, Scikit-Learn, Docker, Kubernetes, MLflow, Databricks, React, Node.js, FastAPI, PostgreSQL",
+    projects: [
+      "Neuro-Symbolic System-2 Reasoning — Hybrid LLM + ACT-R for hallucination reduction (~35% improvement)",
+      "NyayaFlow — AI Judicial System handling 10,000+ cases with 87% accuracy",
+      "DocuParse AI — Multimodal document parser with ~88% accuracy",
+      "CreditPathAI — Loan default prediction with 148K+ financial records",
+      "InterviewSim — AI Interview Simulator with Mistral AI, ElevenLabs voice, 10+ tools",
+      "Chrono Weather — NASA-powered forecasting across 193 countries with 95%+ uptime"
+    ],
+    experience: [
+      "AI/ML Intern at Infosys Springboard (Feb-Apr 2026) — Random Forest model with 0.96 ROC-AUC",
+      "Website Developer at Eureka Institute (Nov 2025-Jan 2026) — React/TypeScript, 95% merge acceptance rate",
+      "Freelance Web Developer for PROFORMA, Germany (Oct 2024) — 13,000+ lines CSS, 45% usability improvement"
+    ],
+    achievements: [
+      "Finalist — Infosys Global Hackathon 2025 (Top 2/32 at Mysuru DC, Grand Finale in Hyderabad)",
+      "Runner-Up — TiE U Global Hackathon 2024 (VIP invite to TiE Global Summit 2025)",
+      "Finalist — Meta PyTorch OpenEnv Hackathon 2025 (Top 800/30,000+ teams)",
+      "1st Place — Eurekathon 2025 (Coding Track)",
+      "2nd Place — HAXLR8 2.0 (24-Hour Hackathon, MIT Mysuru)",
+      "Artificial Intelligence Primer — Certificate of Achievement (Infosys)"
+    ],
+    certifications: [
+      "Salesforce Certified Platform Developer I (2026)",
+      "Machine Learning Specialization — DeepLearning.AI & Stanford (Coursera, 2025)",
+      "NPTEL — Introduction to IoT (2026)",
+      "Alibaba Cloud Computing Specialization (Coursera, 2026)",
+      "Google Cloud Career Launchpad — Cloud Engineer (2025)",
+      "Google Cloud Career Launchpad — Data Analytics (2026)",
+      "Software Development Lifecycle Specialization — University of Minnesota (2026)",
+      "Artificial Intelligence Primer — Infosys (2026)"
+    ]
+  };
+
+  function getBotResponse(input) {
+    const q = input.toLowerCase().trim();
+
+    if (q.match(/hi|hello|hey|sup/)) return `Hey there! 👋 I'm Shamanth's assistant. Ask me about his skills, projects, experience, or certifications!`;
+    if (q.match(/name|who/)) return `He's ${botKnowledge.name} — a ${botKnowledge.role} and ${botKnowledge.year} at ${botKnowledge.college}.`;
+    if (q.match(/skill|tech|stack|language/)) return `His tech stack includes: ${botKnowledge.skills}.`;
+    if (q.match(/project/)) return `He's built 6+ projects:\n• ${botKnowledge.projects.join('\n• ')}`;
+    if (q.match(/experience|intern|work|job/)) return `Work experience:\n• ${botKnowledge.experience.join('\n• ')}`;
+    if (q.match(/achieve|award|hackathon|winner|won/)) return `Achievements:\n• ${botKnowledge.achievements.join('\n• ')}`;
+    if (q.match(/cert|credential|course/)) return `Certifications:\n• ${botKnowledge.certifications.join('\n• ')}`;
+    if (q.match(/gpa|grade|score/)) return `His current GPA is ${botKnowledge.gpa}.`;
+    if (q.match(/college|university|school|education/)) return `He's a ${botKnowledge.year} at ${botKnowledge.college} with a GPA of ${botKnowledge.gpa}.`;
+    if (q.match(/email|mail|contact/)) return `You can reach him at ${botKnowledge.email} or call ${botKnowledge.phone}. He's based in ${botKnowledge.location}.`;
+    if (q.match(/github|repo/)) return `GitHub: ${botKnowledge.github}`;
+    if (q.match(/linkedin/)) return `LinkedIn: ${botKnowledge.linkedin}`;
+    if (q.match(/location|city|where/)) return `He's based in ${botKnowledge.location}.`;
+    if (q.match(/resume|cv|download/)) return `You can download his resume from the top-right button on the site!`;
+    if (q.match(/python|pytorch|ml|machine learn/)) return `He's proficient in Python, PyTorch, TensorFlow, Scikit-Learn, HuggingFace, and modern MLOps tools like Docker, Kubernetes, and MLflow.`;
+    if (q.match(/web|react|frontend|full.?stack/)) return `He does full-stack web development with React.js, Node.js, FastAPI, and has delivered production-grade platforms.`;
+    if (q.match(/thank|bye|cool/)) return `Glad I could help! Feel free to come back anytime. 😊`;
+
+    return `I'm not sure about that specific topic, but I know all about Shamanth's skills, projects, experience, achievements, certifications, and education. Try asking about one of those!`;
+  }
+
+  function addMessage(text, isUser) {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${isUser ? 'chat-user' : 'chat-bot'}`;
+    div.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`;
+    chatbotMessages.appendChild(div);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  function handleSend() {
+    const val = chatbotInput.value.trim();
+    if (!val) return;
+    addMessage(val, true);
+    chatbotInput.value = '';
+    setTimeout(() => {
+      addMessage(getBotResponse(val), false);
+    }, 400);
+  }
+
+  if (chatbotSend) chatbotSend.addEventListener('click', handleSend);
+  if (chatbotInput) chatbotInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+
 });
