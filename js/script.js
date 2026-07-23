@@ -432,11 +432,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Toggle chatbot
+  const orbBubble = document.querySelector('.ai-orb-bubble');
   if (aiOrb) {
     aiOrb.addEventListener('click', () => {
       chatbotPanel.classList.toggle('open');
       if (chatbotPanel.classList.contains('open')) {
         chatbotInput.focus();
+        if (orbBubble) orbBubble.style.display = 'none';
+      } else {
+        if (orbBubble) orbBubble.style.display = 'block';
       }
     });
   }
@@ -444,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (chatbotClose) {
     chatbotClose.addEventListener('click', () => {
       chatbotPanel.classList.remove('open');
+      if (orbBubble) orbBubble.style.display = 'block';
     });
   }
 
@@ -496,25 +501,63 @@ document.addEventListener('DOMContentLoaded', () => {
   function getBotResponse(input) {
     const q = input.toLowerCase().trim();
 
-    if (q.match(/hi|hello|hey|sup/)) return `Hey there! 👋 I'm Timi, Shamanth's assistant. Ask me about his skills, projects, experience, or certifications!`;
-    if (q.match(/name|who/)) return `He's ${botKnowledge.name} — a ${botKnowledge.role} and ${botKnowledge.year} at ${botKnowledge.college}.`;
-    if (q.match(/skill|tech|stack|language/)) return `His tech stack includes: ${botKnowledge.skills}.`;
-    if (q.match(/project/)) return `He's built 6+ projects:\n• ${botKnowledge.projects.join('\n• ')}`;
-    if (q.match(/experience|intern|work|job/)) return `Work experience:\n• ${botKnowledge.experience.join('\n• ')}`;
-    if (q.match(/achieve|award|hackathon|winner|won/)) return `Achievements:\n• ${botKnowledge.achievements.join('\n• ')}`;
-    if (q.match(/cert|credential|course/)) return `Certifications:\n• ${botKnowledge.certifications.join('\n• ')}`;
-    if (q.match(/gpa|grade|score/)) return `His current GPA is ${botKnowledge.gpa}.`;
-    if (q.match(/college|university|school|education/)) return `He's a ${botKnowledge.year} at ${botKnowledge.college} with a GPA of ${botKnowledge.gpa}.`;
-    if (q.match(/email|mail|contact/)) return `You can reach him at ${botKnowledge.email} or call ${botKnowledge.phone}. He's based in ${botKnowledge.location}.`;
-    if (q.match(/github|repo/)) return `GitHub: ${botKnowledge.github}`;
-    if (q.match(/linkedin/)) return `LinkedIn: ${botKnowledge.linkedin}`;
-    if (q.match(/location|city|where/)) return `He's based in ${botKnowledge.location}.`;
-    if (q.match(/resume|cv|download/)) return `You can download his resume from the top-right button on the site!`;
-    if (q.match(/python|pytorch|ml|machine learn/)) return `He's proficient in Python, PyTorch, TensorFlow, Scikit-Learn, HuggingFace, and modern MLOps tools like Docker, Kubernetes, and MLflow.`;
-    if (q.match(/web|react|frontend|full.?stack/)) return `He does full-stack web development with React.js, Node.js, FastAPI, and has delivered production-grade platforms.`;
-    if (q.match(/thank|bye|cool/)) return `Glad I could help! Feel free to come back anytime. 😊`;
+    // Greetings
+    if (q.match(/^(hi|hello|hey|sup|yo|hola|greetings)/)) return `Hey there! 👋 I'm Timi. Ask me about Shamanth's skills, projects, experience, achievements, certifications, or education!`;
 
-    return `I'm not sure about that specific topic, but I know all about Shamanth's skills, projects, experience, achievements, certifications, and education. Try asking about one of those!`;
+    // Skills
+    if (q.match(/skill|tech|stack|language|tool|framework|what.*(know|use|work with)/)) return `His tech stack includes:\n\n🐍 Languages: Python, JavaScript, Java, SQL\n🧠 ML/AI: PyTorch, TensorFlow, HuggingFace, Scikit-Learn, Keras, Pandas, NumPy\n🛠️ MLOps: Docker, Kubernetes, MLflow, Databricks\n🌐 Web: React.js, Node.js, FastAPI\n💾 Databases: PostgreSQL, MySQL`;
+
+    // Projects - general
+    if (q.match(/project|what.*(built|build|made|create)/)) return `He's built 6+ projects:\n\n1. 🧠 Neuro-Symbolic System-2 Reasoning — ~35% hallucination reduction\n2. ⚖️ NyayaFlow — AI Judicial System (87% accuracy, 10K+ cases)\n3. 📄 DocuParse AI — Document parser (~88% accuracy)\n4. 💳 CreditPathAI — Loan default prediction (148K+ records)\n5. 🎤 InterviewSim — AI Interview Simulator with Mistral AI\n6. 🌦️ Chrono Weather — NASA forecasting (193 countries)`;
+
+    // Individual projects
+    if (q.match(/neuro|symbolic|reason|hallucin/)) return `Neuro-Symbolic System-2 Reasoning: A hybrid LLM + ACT-R architecture that reduces hallucinations by ~35%. Built with PyTorch, HuggingFace Transformers, and Python.\n\nGitHub: github.com/MS-Shamanth/Neuro-Symbolic-Agent`;
+    if (q.match(/nyaya|judicial|court|legal/)) return `NyayaFlow — AI Judicial Case Intelligence System running on Databricks (Delta Lake, MLflow). Handles 10,000+ cases in <2 seconds with ~87% accuracy. Saves 40% research time.`;
+    if (q.match(/docu|parse|ocr|document/)) return `DocuParse AI — Multimodal document parser handling 1,000+ PDFs/images with ~88% accuracy. Uses Tesseract OCR with bounding box detection, deployed with Docker and MLflow.`;
+    if (q.match(/credit|loan|default|xgboost/)) return `CreditPathAI — AI loan default prediction system. Ingests 148K+ financial records into PostgreSQL, benchmarks XGBoost and LightGBM for risk assessment.\n\nGitHub: github.com/springboardmentor14065l/ai-creditPath/tree/MS_Shamanth`;
+    if (q.match(/interview|sim|mock|mistral/)) return `InterviewSim — AI Interview Rehearsal Simulator built with FastAPI, React.js, PostgreSQL, and Node.js. Features 10+ career-prep tools, a 4-metric AI scoring system using Mistral AI, and ElevenLabs voice-based interviewing.\n\nGitHub: github.com/MS-Shamanth/Interview_Simulator`;
+    if (q.match(/chrono|weather|nasa|forecast|climate/)) return `Chrono Weather — AI-Powered NASA Analog Forecasting System. Full-stack platform using React.js and Node.js, integrating 7+ NASA APIs. Processes 40+ years of satellite data with 5 km accuracy across 193 countries.\n\nGitHub: github.com/MS-Shamanth/ChronoWeather`;
+
+    // Experience
+    if (q.match(/experience|intern|work|job|company|where.*(work|intern)/)) return `Work experience:\n\n1. 🤖 AI/ML Intern — Infosys Springboard (Feb-Apr 2026)\n   • Random Forest model with 0.96 ROC-AUC\n   • Engineered 14+ financial risk features\n\n2. 🌐 Website Developer — Eureka Institute (Nov 2025-Jan 2026)\n   • React/TypeScript, 95% merge rate\n\n3. 💻 Freelance Web Dev — PROFORMA, Germany (Oct 2024)\n   • 13,000+ lines CSS, 45% usability boost`;
+    if (q.match(/infosys/)) return `AI/ML Intern at Infosys Springboard (Feb-Apr 2026): Automated preprocessing for thousands of records (~40% time saved), engineered 14+ financial risk features, built a Random Forest model achieving 0.96 ROC-AUC.`;
+    if (q.match(/eureka/)) return `Website Developer at Eureka Institute (Nov 2025-Jan 2026): Built core frontend modules in React/TypeScript, improved page load by ~28%, delivered weekly features with a 95% merge acceptance rate.`;
+    if (q.match(/proforma|freelance|german/)) return `Freelance Web Developer for PROFORMA, Germany (Oct 2024): Delivered a full-scale frontend with 13,000+ lines of custom CSS, improved usability by ~45%, 100% on-time delivery.`;
+
+    // Achievements
+    if (q.match(/achieve|award|hackathon|winner|won|prize|place/)) return `Achievements:\n\n🏆 Finalist — Infosys Global Hackathon 2025 (Top 2/32, Grand Finale in Hyderabad)\n🥈 Runner-Up — TiE U Global Hackathon 2024 (VIP invite to TiE Global Summit)\n🔥 Finalist — Meta PyTorch OpenEnv Hackathon 2025 (Top 800/30,000+)\n🥇 1st Place — Eurekathon 2025 (Coding Track)\n🥈 2nd Place — HAXLR8 2.0 (24-Hour Hackathon, MIT Mysuru)\n📜 AI Primer — Certificate of Achievement (Infosys)`;
+
+    // Certifications
+    if (q.match(/cert|credential|course|certification/)) return `Certifications:\n\n• Salesforce Certified Platform Developer I (2026)\n• Machine Learning Specialization — Stanford/DeepLearning.AI (2025)\n• NPTEL — Introduction to IoT (2026)\n• Alibaba Cloud Computing Specialization (2026)\n• Google Cloud — Cloud Engineer Track (2025)\n• Google Cloud — Data Analytics Track (2026)\n• SDLC Specialization — Univ. of Minnesota (2026)\n• AI Primer — Infosys (2026)`;
+
+    // Education
+    if (q.match(/college|university|school|education|degree|study|gpa|grade|score/)) return `🎓 Final-year B.E. CSE (AIML) at Vidyavardhaka College of Engineering, Mysuru.\nGPA: 8.31/10 | Expected graduation: Aug 2027`;
+
+    // Contact
+    if (q.match(/email|mail|contact|reach|connect/)) return `📧 Email: shamanthms1@gmail.com\n📞 Phone: +91 7019378029\n📍 Location: Mysuru, Karnataka, India\n\nOr use the contact form on this site!`;
+    if (q.match(/phone|call|number/)) return `📞 Phone: +91 7019378029`;
+    if (q.match(/github|repo|code/)) return `GitHub: github.com/MS-Shamanth\nHe has repos for Neuro-Symbolic Agent, ChronoWeather, Interview Simulator, and CreditPathAI.`;
+    if (q.match(/linkedin/)) return `LinkedIn: linkedin.com/in/ms-shamanth/`;
+    if (q.match(/location|city|where|live|from|based/)) return `He's based in Mysuru, Karnataka, India.`;
+    if (q.match(/resume|cv|download/)) return `You can download his resume using the "Resume" button in the top-right corner of the navigation bar!`;
+
+    // About / Who
+    if (q.match(/who|about|tell me about|introduce/)) return `Shamanth M S is a final-year AIML student at VVCE, Mysuru. He's an ML Engineer & Web Developer who builds production-ready AI systems using PyTorch, HuggingFace, and modern MLOps. He has 6+ projects, 3 internships, and multiple hackathon wins.`;
+    if (q.match(/name/)) return `His name is Shamanth M S.`;
+
+    // ML specific
+    if (q.match(/python|pytorch|ml|machine learn|deep learn|ai|artificial intel/)) return `He's proficient in Python, PyTorch, TensorFlow, Scikit-Learn, HuggingFace, Keras, and modern MLOps tools like Docker, Kubernetes, MLflow, and Databricks.`;
+    if (q.match(/web|react|frontend|full.?stack|backend|node/)) return `He does full-stack web dev with React.js, Node.js, FastAPI, TypeScript, and has delivered production platforms for clients in Germany and India.`;
+    if (q.match(/docker|kubernetes|mlops|deploy|devops/)) return `He's experienced with Docker, Kubernetes, MLflow, and Databricks for containerization, orchestration, and ML model deployment.`;
+
+    // Fun / misc
+    if (q.match(/hobby|hobbies|fun|free time|interest/)) return `He's passionate about AI research, building full-stack apps, participating in hackathons, and exploring new ML papers!`;
+    if (q.match(/age|old|born/)) return `He's a final-year student (expected graduation Aug 2027), so around 21-22 years old.`;
+    if (q.match(/thank|bye|cool|great|awesome|nice/)) return `Glad I could help! Feel free to come back anytime. 😊`;
+    if (q.match(/timi|your name|who are you/)) return `I'm Timi! Shamanth's personal AI assistant built into this portfolio. I know everything about his work, skills, and achievements. Ask away!`;
+
+    // Fallback
+    return `Hmm, I'm not sure about that specific topic. Try asking about:\n• Skills & tech stack\n• Projects (6+ built)\n• Work experience & internships\n• Hackathon achievements\n• Certifications\n• Education & GPA\n• Contact info`;
   }
 
   function addMessage(text, isUser) {
