@@ -2490,13 +2490,23 @@ footer {
 }
 
 .ai-orb-eye {
-  width: 7px;
-  height: 20px;
+  width: 5px;
+  height: 5px;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 50%;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
   transition: transform 0.1s ease-out;
   z-index: 2;
+  animation: eyeBlink 3s ease-in-out infinite;
+}
+
+.ai-orb-eye-right {
+  animation-delay: 0.15s;
+}
+
+@keyframes eyeBlink {
+  0%, 40%, 60%, 100% { transform: scaleY(1); height: 5px; }
+  50% { transform: scaleY(0.1); height: 1px; }
 }
 
 .ai-orb-glow {
