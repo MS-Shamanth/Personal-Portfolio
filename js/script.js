@@ -396,6 +396,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  //  AI CORE — Particles + Cursor Interaction
+  // ==========================================
+  const aiCoreVisual = document.getElementById('aiCoreVisual');
+  const aiCoreImg = document.getElementById('aiCoreImg');
+  const aiCoreParticles = document.getElementById('aiCoreParticles');
+
+  // Spawn floating particles
+  if (aiCoreParticles) {
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'ai-core-particle';
+      // Distribute in a ring pattern around center
+      const angle = (i / 40) * Math.PI * 2;
+      const radius = 35 + Math.random() * 15;
+      p.style.left = (50 + radius * Math.cos(angle)) + '%';
+      p.style.top = (50 + radius * Math.sin(angle)) + '%';
+      p.style.animationDelay = (Math.random() * 4) + 's';
+      p.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+      const size = (2 + Math.random() * 3) + 'px';
+      p.style.width = size;
+      p.style.height = size;
+      aiCoreParticles.appendChild(p);
+    }
+  }
+
+  // Cursor parallax on AI core image — smooth lerp
+  if (aiCoreVisual) {
+    let targetRotX = 0, targetRotY = 0, currentRotX = 0, currentRotY = 0;
+    let isOverCore = false;
+    let floatTime = 0;
+    let currentFloatY = 0;
+    let currentScale = 1;
+
+    aiCoreVisual.addEventListener('mousemove', (e) => {
+      const rect = aiCoreVisual.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetRotY = x * 18;
+      targetRotX = -y * 18;
+      isOverCore = true;
+    });
+
+    aiCoreVisual.addEventListener('mouseleave', () => {
+      targetRotX = 0;
+      targetRotY = 0;
+      isOverCore = false;
+    });
+
+    function animateCore() {
+      floatTime += 0.015;
+
+      // Smooth lerp for rotation
+      currentRotX += (targetRotX - currentRotX) * 0.04;
+      currentRotY += (targetRotY - currentRotY) * 0.04;
+
+      // Smooth lerp for float (no sudden jump)
+      const targetFloatY = isOverCore ? 0 : Math.sin(floatTime) * 14;
+      currentFloatY += (targetFloatY - currentFloatY) * 0.03;
+
+      // Smooth lerp for scale
+      const targetScale = isOverCore ? 1.03 : 1;
+      currentScale += (targetScale - currentScale) * 0.03;
+
+      const floatRot = isOverCore ? 0 : Math.sin(floatTime * 0.7) * 1.5;
+      const smoothFloatRot = floatRot; // already smooth via sine
+
+      aiCoreImg.style.transform = `translateY(${currentFloatY}px) rotateX(${currentRotX}deg) rotateY(${currentRotY}deg) scale(${currentScale})`;
+      requestAnimationFrame(animateCore);
+    }
+    animateCore();
+  }
+
+  // ==========================================
   //  PAGE VISIBILITY – TITLE ANIMATION
   // ==========================================
   const originalTitle = document.title;

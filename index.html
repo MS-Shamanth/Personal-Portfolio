@@ -109,7 +109,10 @@
       </div>
     </div>
     <div class="hero-visual reveal-up">
-      <canvas id="aiCoreCanvas"></canvas>
+      <div class="ai-core-visual" id="aiCoreVisual">
+        <img src="assets/images/ai-core.png" alt="AI Core" class="ai-core-img" id="aiCoreImg">
+        <div class="ai-core-particles" id="aiCoreParticles"></div>
+      </div>
     </div>
     <a href="#about" class="scroll-indicator">
       <div class="scroll-mouse">
@@ -817,15 +820,7 @@
     </div>
   </footer>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-      }
-    }
-  </script>
   <script src="js/script.js"></script>
-  <script type="module" src="js/aicore.js"></script>
 </body>
 
 </html>

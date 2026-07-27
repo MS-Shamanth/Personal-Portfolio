@@ -370,6 +370,7 @@ nav {
   padding: 120px 80px 60px;
   position: relative;
   overflow: hidden;
+  gap: 0;
 }
 
 .hero-bg-grid {
@@ -390,6 +391,7 @@ nav {
   flex: 1;
   max-width: 650px;
   z-index: 2;
+  position: relative;
 }
 
 .hero-badge {
@@ -687,16 +689,73 @@ nav {
 
 /* Hero Visual / 3D Card */
 .hero-visual {
-  position: relative;
-  z-index: 2;
-  width: 400px;
-  height: 400px;
+  position: absolute;
+  right: -200px;
+  top: -35%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 1300px;
+  height: 1300px;
 }
 
-#aiCoreCanvas {
+.ai-core-visual {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.ai-core-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.4)) drop-shadow(0 0 60px rgba(168, 85, 247, 0.2));
+  will-change: transform;
+  transition: filter 0.6s ease;
+}
+
+.ai-core-visual:hover .ai-core-img {
+  filter: drop-shadow(0 0 50px rgba(124, 58, 237, 0.7)) drop-shadow(0 0 100px rgba(168, 85, 247, 0.4));
+}
+
+.ai-core-particles {
+  position: absolute;
+  inset: -30px;
+  pointer-events: none;
+}
+
+.ai-core-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--accent-3);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 6px rgba(168, 85, 247, 0.6);
+}
+
+.ai-core-particle:nth-child(odd) {
+  animation: particleDriftUp 3s ease-in-out infinite;
+}
+
+.ai-core-particle:nth-child(even) {
+  animation: particleDriftSide 3.5s ease-in-out infinite;
+}
+
+@keyframes particleDriftUp {
+  0% { opacity: 0; transform: translateY(0) scale(0.5); }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-60px) translateX(15px) scale(0); }
+}
+
+@keyframes particleDriftSide {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  20% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(30px, -40px) scale(0); }
 }
 
 .hero-card-3d {
@@ -2207,8 +2266,9 @@ footer {
 
   .hero-visual {
     order: -1;
-    width: 280px;
-    height: 280px;
+    width: 340px;
+    height: 340px;
+    margin: 0 auto;
   }
 
   .hero-card-3d {
